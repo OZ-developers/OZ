@@ -16,9 +16,12 @@ class Login extends Component {
     this.setState({ tags })
   }
   deleteTag = i => {
-    console.log(i)
     let { tags } = this.state
+    console.log(i)
+
     tags.splice(i, 1)
+    console.log(tags)
+
     this.setState({ tags })
   }
   renderTags() {
@@ -28,7 +31,12 @@ class Login extends Component {
           {this.state.tags.map(tag => (
             <li key={tag}>
               {tag}
-              <Button type="primary" danger onClick={() => this.deleteTag(1)}>
+              <Button
+                type="primary"
+                danger
+                size="small"
+                onClick={tag => this.deleteTag(tag)}
+              >
                 删除
               </Button>
             </li>
